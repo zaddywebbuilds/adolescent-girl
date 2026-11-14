@@ -1,0 +1,18 @@
+node_modules/
+dist/
+dist-ssr/
+scratch/
+*.local
+.env
+.env.*
+!.env.example
+.vercel
+.DS_Store
+ebook.txt
+
+# The paid product and its source art never belong in a public repo.
+private/
+A_Growing_Up_Guide_for_Teen_Girls.pdf
+*.png
+!public/**/*.png
+*.tsbuildinfo
