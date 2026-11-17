@@ -8,7 +8,9 @@ import {
   type ReactNode,
 } from 'react';
 import { Loader2, Lock, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { product, priceLabel, formatNaira } from '../config/site';
+import { openPaystack } from '../lib/paystack';
 import { getAttribution, trackCtaClick, trackInitiateCheckout } from '../lib/analytics';
 import { Button } from './ui';
 
@@ -57,6 +59,7 @@ function CheckoutDialog({
   const [error, setError] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     firstFieldRef.current?.focus();
@@ -102,7 +105,7 @@ function CheckoutDialog({
       return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(cleanEmail)) {
-      setError('Please enter a valid email address. Your download link is sent there.');
+      setError('Please enter a valid email address. Your payment receipt is sent there.');
       return;
     }
 
@@ -110,36 +113,21 @@ function CheckoutDialog({
     setError(null);
 
     try {
-      const res = await fetch('/api/paystack/initialize', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: cleanName,
-          email: cleanEmail,
-          source,
-          attribution: getAttribution(),
-        }),
+      await openPaystack({
+        name: cleanName,
+        email: cleanEmail,
+        source,
+        attribution: getAttribution(),
+        onClose: () => setStatus('idle'),
+        onSuccess: (reference) => {
+          // Paystack only calls this after a successful charge. The site has
+          // no server, so this is the confirmation we act on.
+          navigate(
+            `/order-success?reference=${encodeURIComponent(reference)}` +
+              `&name=${encodeURIComponent(cleanName.split(' ')[0] ?? '')}`,
+          );
+        },
       });
-
-      // A non-JSON reply means the API is missing or erroring. The buyer
-      // should never see a parser message, so fall back to plain words.
-      let data: { authorization_url?: string; message?: string } = {};
-      try {
-        data = await res.json();
-      } catch {
-        data = {};
-      }
-
-      if (!res.ok || !data.authorization_url) {
-        throw new Error(
-          data.message ??
-            'We could not start the payment right now. Please try again in a moment.',
-        );
-      }
-
-      // Paystack takes over from here. Verification happens server side
-      // when the visitor returns to /order-success.
-      window.location.href = data.authorization_url;
     } catch (err) {
       setStatus('error');
       setError(
@@ -221,7 +209,7 @@ function CheckoutDialog({
               required
             />
             <p id="checkout-email-help" className="mt-1.5 text-sm text-charcoal/60">
-              Your download link is sent to this address.
+              Paystack sends your payment receipt to this address.
             </p>
           </div>
 
@@ -238,7 +226,7 @@ function CheckoutDialog({
             {status === 'submitting' ? (
               <>
                 <Loader2 className="h-5 w-5 animate-spin" aria-hidden="true" />
-                Taking you to Paystack
+                Opening secure payment
               </>
             ) : (
               `Pay ${formatNaira(product.priceNgn)} securely`

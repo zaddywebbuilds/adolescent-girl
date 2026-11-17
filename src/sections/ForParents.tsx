@@ -2,6 +2,7 @@ import { Heart, MessageCircle, Repeat } from 'lucide-react';
 import { useCheckout } from '../components/Checkout';
 import { Eyebrow, Reveal, Section, SectionHeading, Shell } from '../components/ui';
 import { ageBands } from '../config/content';
+import { asset } from '../lib/asset';
 
 const benefits = [
   {
@@ -27,8 +28,8 @@ export function BenefitsForParents() {
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
           <Reveal>
             <img
-              src="/images/reading-together-800.webp"
-              srcSet="/images/reading-together-800.webp 800w, /images/reading-together.webp 1400w"
+              src={asset('/images/reading-together-800.webp')}
+              srcSet={`${asset('/images/reading-together-800.webp')} 800w, ${asset('/images/reading-together.webp')} 1400w`}
               sizes="(min-width: 1024px) 48vw, 92vw"
               alt="A mother and her teenage daughter reading a book together at a table."
               width={800}
@@ -97,7 +98,7 @@ export function AgeAppropriateness() {
             <Reveal key={band.range} delay={i * 80}>
               <article className="card h-full overflow-hidden">
                 <img
-                  src={band.image}
+                  src={asset(band.image)}
                   alt={band.alt}
                   width={800}
                   height={420}

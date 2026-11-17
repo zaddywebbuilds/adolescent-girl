@@ -6,6 +6,7 @@ import { PreviewCarousel } from '../components/PreviewCarousel';
 import { Eyebrow, Reveal, Section, SectionHeading, Shell } from '../components/ui';
 import { chapters, learnItems, quotes } from '../config/content';
 import { product } from '../config/site';
+import { asset } from '../lib/asset';
 
 export function IntroducingBook() {
   const { open } = useCheckout();
@@ -211,7 +212,7 @@ export function HowItWorks() {
                   </p>
                 </div>
                 <img
-                  src={f.image}
+                  src={asset(f.image)}
                   alt={f.imageAlt}
                   width={440}
                   height={300}

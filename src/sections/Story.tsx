@@ -1,5 +1,6 @@
 import { Reveal, Section, SectionHeading, Shell, Sprig } from '../components/ui';
 import { LearnIcon } from '../components/Icons';
+import { asset } from '../lib/asset';
 
 const questions = [
   'Why is my body changing?',
@@ -33,8 +34,8 @@ export function EmotionalConnection() {
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
           <Reveal className="order-2 lg:order-1">
             <img
-              src="/images/mother-daughter-sofa-800.webp"
-              srcSet="/images/mother-daughter-sofa-800.webp 800w, /images/mother-daughter-sofa.webp 1400w"
+              src={asset('/images/mother-daughter-sofa-800.webp')}
+              srcSet={`${asset('/images/mother-daughter-sofa-800.webp')} 800w, ${asset('/images/mother-daughter-sofa.webp')} 1400w`}
               sizes="(min-width: 1024px) 48vw, 92vw"
               alt="A mother and her teenage daughter sitting together on a sofa, talking and smiling."
               width={800}

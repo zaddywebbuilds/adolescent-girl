@@ -175,6 +175,6 @@ export const steps: { title: string; body: string }[] = [
   },
   {
     title: 'Download your ebook',
-    body: 'Once payment is confirmed, your private download link opens straight away.',
+    body: 'The thank-you page opens with your download button. Save the file to your device.',
   },
 ];

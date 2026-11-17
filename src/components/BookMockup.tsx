@@ -1,4 +1,5 @@
 import { product } from '../config/site';
+import { asset } from '../lib/asset';
 
 const coverAlt = `Cover of ${product.title}, a guide for girls aged ${product.ageRange}`;
 
@@ -28,7 +29,7 @@ export function BookMockup({
           className="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-rose-soft via-cream to-sage-soft blur-[2px]"
         />
         <img
-          src={src}
+          src={asset(src)}
           alt={coverAlt}
           width={width}
           height={height}
@@ -49,7 +50,7 @@ export function BookShowcase({ className }: { className?: string }) {
     <div className={className}>
       <div className="grid gap-4 sm:grid-cols-5 sm:items-center">
         <img
-          src="/images/cover-flat.webp"
+          src={asset('/images/cover-flat.webp')}
           alt={coverAlt}
           width={500}
           height={428}
@@ -59,7 +60,7 @@ export function BookShowcase({ className }: { className?: string }) {
         />
         <div className="grid gap-4 sm:col-span-3">
           <img
-            src="/images/spread-periods.webp"
+            src={asset('/images/spread-periods.webp')}
             alt="An open spread from Chapter 5, Periods Without Fear or Shame, showing key takeaways."
             width={544}
             height={428}
@@ -68,7 +69,7 @@ export function BookShowcase({ className }: { className?: string }) {
             className="rounded-xl shadow-soft"
           />
           <img
-            src="/images/spread-reflection.webp"
+            src={asset('/images/spread-reflection.webp')}
             alt="An open spread from Chapter 2 beside a Reflection Time activity page."
             width={505}
             height={273}
@@ -86,7 +87,7 @@ export function BookShowcase({ className }: { className?: string }) {
 export function DeviceMockup({ className }: { className?: string }) {
   return (
     <img
-      src="/images/devices.webp"
+      src={asset('/images/devices.webp')}
       alt={`${product.title} shown on a tablet and a phone`}
       width={472}
       height={428}

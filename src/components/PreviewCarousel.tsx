@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, X, ZoomIn } from 'lucide-react';
 import { previewPages } from '../config/content';
+import { asset } from '../lib/asset';
 
 /**
  * Horizontal page preview. Swipes on touch, arrow buttons on desktop,
@@ -77,7 +78,7 @@ export function PreviewCarousel() {
               aria-label={`Open a larger view of ${page.label}, page ${page.page}`}
             >
               <img
-                src={`/images/preview/page-${String(page.page).padStart(3, '0')}.webp`}
+                src={asset(`/images/preview/page-${String(page.page).padStart(3, '0')}.webp`)}
                 alt={page.alt}
                 width={900}
                 height={1350}
@@ -141,7 +142,7 @@ export function PreviewCarousel() {
             <X className="h-5 w-5" aria-hidden="true" />
           </button>
           <img
-            src={`/images/preview/page-${String(previewPages[lightbox].page).padStart(3, '0')}.webp`}
+            src={asset(`/images/preview/page-${String(previewPages[lightbox].page).padStart(3, '0')}.webp`)}
             alt={previewPages[lightbox].alt}
             width={900}
             height={1350}

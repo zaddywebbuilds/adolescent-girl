@@ -4,9 +4,10 @@
  * Rules enforced here:
  *  - Nothing loads until the visitor consents (analytics.requireConsent).
  *  - Nothing loads when the IDs are not configured.
- *  - Purchase fires only from the verified order-success page, once per
- *    reference, using an event ID the server also sends to the Conversions
- *    API so that the browser and server events are deduplicated.
+ *  - Purchase fires only from the thank-you page, once per reference. That
+ *    page is reached from Paystack's success callback, which runs after a
+ *    charge succeeds. There is no server, so the charge is not independently
+ *    re-checked: reconcile real revenue in the Paystack dashboard, not here.
  */
 import { analytics, product } from '../config/site';
 
@@ -165,7 +166,7 @@ export function trackCtaClick(location: string) {
 }
 
 /**
- * Purchase. Only call with a server-verified transaction.
+ * Purchase. Called from the thank-you page after Paystack's success callback.
  * Deduplicated per reference so a page refresh cannot double count.
  */
 export function trackPurchase(args: {

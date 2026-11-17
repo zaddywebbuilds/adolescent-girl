@@ -50,8 +50,13 @@ export const business = {
 } as const;
 
 export const site = {
-  /** NEEDS CONFIRMATION: production domain, no trailing slash. */
-  url: 'https://example.com',
+  /**
+   * Production URL, no trailing slash. This is a GitHub Pages project site,
+   * so it includes the repository sub-path. If a custom domain is added
+   * later, change this to the bare domain and set BASE to '/' in
+   * vite.config.ts at the same time.
+   */
+  url: 'https://zaddywebbuilds.github.io/adolescent-girl',
   locale: 'en_NG',
   title: 'Dear Daughter | Growing Up & Puberty Guide for Girls in Nigeria',
   description:
@@ -75,10 +80,34 @@ export const analytics = {
 
 export const payments = {
   provider: 'paystack' as const,
-  /** Public key is injected at build time; the secret key never reaches the browser. */
-  publicKey: (import.meta.env?.VITE_PAYSTACK_PUBLIC_KEY as string | undefined) ?? null,
-  /** Logos are rendered as plain text labels until the live channels are confirmed. */
+  /**
+   * Paystack PUBLIC key (pk_live_... or pk_test_...).
+   *
+   * This key is designed to be visible in the page: it can only start a
+   * payment, never move money or read transactions. It is the only Paystack
+   * key this site uses, because a static site has no server to keep a secret
+   * key in. NEEDS CONFIRMATION before launch.
+   */
+  publicKey:
+    (import.meta.env?.VITE_PAYSTACK_PUBLIC_KEY as string | undefined) ?? null,
+  /** Channels offered in the Paystack popup. */
+  channels: ['card', 'bank', 'ussd', 'bank_transfer'] as string[],
+  /** Plain labels, shown instead of logos until live channels are confirmed. */
   methods: ['Card', 'Bank transfer', 'USSD'],
+} as const;
+
+export const delivery = {
+  /**
+   * The ebook is served straight from /public on GitHub Pages.
+   *
+   * Without a server there is no way to check that a visitor paid before
+   * handing over the file, so this URL is public to anyone who has it. That
+   * is the accepted trade-off for instant delivery. Drop the final PDF into
+   * public/downloads/ and keep this filename in step.
+   */
+  file: '/downloads/dear-daughter-growing-up-guide.pdf',
+  /** Filename the buyer's browser saves it as. */
+  saveAs: 'Dear-Daughter-Growing-Up-Guide.pdf',
 } as const;
 
 /** Formats naira without decimals: ₦2,500 */

@@ -5,6 +5,7 @@ import { FaqAccordion } from '../components/FaqAccordion';
 import { Reveal, Section, SectionHeading, Shell, Sprig } from '../components/ui';
 import { steps } from '../config/content';
 import { payments, priceLabel, product } from '../config/site';
+import { asset } from '../lib/asset';
 
 const included = [
   'Complete digital ebook',
@@ -113,7 +114,7 @@ export function HowToGetIt() {
 
           <Reveal>
             <img
-              src="/images/devices.webp"
+              src={asset('/images/devices.webp')}
               alt={`${product.title} shown on a tablet and a phone`}
               width={472}
               height={428}
@@ -181,7 +182,7 @@ export function FinalCta() {
 
         <Reveal>
           <img
-            src="/images/girl-reading-book.webp"
+            src={asset('/images/girl-reading-book.webp')}
             alt="A girl lying on her bed, smiling as she reads the guide."
             width={496}
             height={512}

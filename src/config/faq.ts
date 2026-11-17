@@ -45,7 +45,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'How will I receive the ebook?',
-    a: 'After your payment is confirmed, you are returned to a confirmation page with a private download link. The link is also sent to the email address you enter at checkout.',
+    a: 'As soon as your payment goes through, you are returned to a thank-you page with the download button. Save the file to your device there and then. Paystack also emails you a receipt for the payment.',
   },
   {
     q: 'Can I buy it for the daughter of a friend or relative?',

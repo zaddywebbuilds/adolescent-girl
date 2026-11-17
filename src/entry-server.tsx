@@ -10,7 +10,7 @@ export function render(path: string) {
   const meta = routes.find((r) => r.path === path) ?? notFoundMeta;
   const html = renderToString(
     <StrictMode>
-      <StaticRouter location={path}>
+      <StaticRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')} location={path}>
         <App />
       </StaticRouter>
     </StrictMode>,

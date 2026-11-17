@@ -111,16 +111,17 @@ export function PrivacyPolicy() {
         items={[
           'Paystack, to take payment and confirm it. Paystack processes your payment details under its own privacy policy.',
           'Meta and Google, only if you accept measurement cookies, and only as event data about purchases and page views.',
-          'Our email provider, to deliver your download link once email delivery is connected.',
         ]}
       />
       <P>We do not sell your personal information.</P>
 
-      <H2>How long we keep it</H2>
+      <H2>Where your order details are held</H2>
       <P>
-        Order records, which include your name, email address and transaction reference,
-        are kept for as long as we need them to support your purchase and to meet
-        Nigerian tax and accounting obligations.
+        This website has no server and no database of its own. The name and email
+        address you enter at checkout are passed straight to Paystack with the
+        payment and are held in the seller&rsquo;s Paystack account, which keeps
+        transaction records for as long as Nigerian tax and accounting rules require.
+        Nothing about your order is stored on this website.
       </P>
 
       <H2>Your rights</H2>
@@ -169,15 +170,16 @@ export function TermsAndConditions() {
 
       <H2>Payment</H2>
       <P>
-        Payment is taken in Nigerian naira by Paystack. Your order is only treated as
-        complete once Paystack confirms the payment to our server. A redirect back to
-        this site is not by itself proof of payment.
+        Payment is taken in Nigerian naira by Paystack, on Paystack&rsquo;s own secure
+        checkout. We never see or handle your card details. Your receipt from Paystack
+        is the record of your payment, and the seller can confirm any transaction from
+        its reference.
       </P>
 
       <H2>Delivery</H2>
       <P>
-        See the Delivery Policy. In short, your download link is shown as soon as your
-        payment is verified and is also sent to the email address you provided.
+        See the Delivery Policy. In short, the download appears on the thank-you page
+        straight after your payment succeeds.
       </P>
 
       <H2>Liability</H2>
@@ -249,25 +251,26 @@ export function DeliveryPolicy() {
       <H2>How you receive it</H2>
       <UL
         items={[
-          'You pay on Paystack.',
-          'Our server checks the transaction with Paystack and confirms the amount and currency are correct.',
-          'You are returned to a confirmation page that shows a private download link.',
-          'The same link is sent to the email address you entered at checkout.',
+          'You enter your name and email address, and pay on Paystack.',
+          'Paystack confirms the payment and returns you to the thank-you page on this site.',
+          'The thank-you page shows a download button for the PDF.',
+          'Paystack emails you a receipt for the payment.',
         ]}
       />
 
-      <H2>About the download link</H2>
+      <H2>Save the file when you get it</H2>
       <P>
-        Each link is tied to your transaction and expires after a short period, so it
-        should not be shared. If yours expires you can request a new one using the email
-        address and reference from your purchase.
+        Download the PDF to your own device on the thank-you page rather than leaving
+        it open in a browser tab, so that you keep your copy. Your purchase is covered
+        by the personal use licence in the Terms and Conditions, which does not allow
+        the file to be resold or shared publicly.
       </P>
 
       <H2>If something goes wrong</H2>
       <P>
-        If payment left your account but no link appeared, do not pay again. Contact{' '}
-        {contact} with your transaction reference and the email address you used, and we
-        will check the transaction and restore your access.
+        If payment left your account but the download did not start, do not pay again.
+        Contact {contact} with the transaction reference from your Paystack receipt and
+        the email address you used, and we will send you the file.
       </P>
 
       <H2>Reading the file</H2>
