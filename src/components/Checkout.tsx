@@ -9,7 +9,8 @@ import {
 } from 'react';
 import { Loader2, Lock, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { product, priceLabel, formatNaira } from '../config/site';
+import { delivery, product, priceLabel, formatNaira } from '../config/site';
+import { asset } from '../lib/asset';
 import { openPaystack } from '../lib/paystack';
 import { getAttribution, trackCtaClick, trackInitiateCheckout } from '../lib/analytics';
 import { Button } from './ui';
@@ -113,6 +114,22 @@ function CheckoutDialog({
     setError(null);
 
     try {
+      // Never charge for a file we cannot hand over. The PDF lives at a
+      // static path, so a quick HEAD tells us whether it is actually there
+      // before Paystack takes any money. This also catches a bad upload or a
+      // renamed file later on.
+      const available = await fetch(asset(delivery.file), { method: 'HEAD' })
+        .then((r) => r.ok)
+        .catch(() => false);
+
+      if (!available) {
+        setStatus('error');
+        setError(
+          'The guide is not available for download yet, so we have not taken any payment. Please check back shortly.',
+        );
+        return;
+      }
+
       await openPaystack({
         name: cleanName,
         email: cleanEmail,
