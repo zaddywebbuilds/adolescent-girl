@@ -15,17 +15,16 @@ os.makedirs(PREVIEW, exist_ok=True)
 SHEET_A = "Dear Daughter_ Growing Up Together-2.png"
 SHEET_B = "Dear Daughter_ Growing Up Together-3.png"
 
+# The book that buyers actually download. Covers and page previews are
+# rendered from this file, so the site can never advertise a cover or an
+# interior that differs from the product.
+EBOOK = os.path.join("public", "downloads", "dear-daughter-growing-up-guide.pdf")
+
 # Panels cut from the two contact sheets (both 1536x1024).
 CROPS = {
-    "cover-3d":          (SHEET_B, (0, 0, 497, 512)),
-    "cover-flat":        (SHEET_A, (8, 2, 508, 430)),
     "devices":           (SHEET_A, (513, 2, 985, 430)),
-    "spread-periods":    (SHEET_A, (990, 2, 1534, 430)),
-    "spread-reflection": (SHEET_B, (0, 517, 505, 790)),
-    "spread-safety":     (SHEET_A, (718, 712, 1150, 1020)),
     "girl-reading-book": (SHEET_B, (1040, 0, 1536, 512)),
     "schoolgirls":       (SHEET_B, (697, 795, 1150, 1024)),
-    "goals-notebook":    (SHEET_B, (1157, 795, 1536, 1024)),
     "father-daughter":   (SHEET_A, (1155, 712, 1536, 1020)),
 }
 
@@ -45,8 +44,9 @@ PHOTOS = {
     "portrait-braids":        "Cozy Bedroom Portrait with Braids-14.png",
 }
 
-# Curated interior pages for the "Take a Look Inside" carousel.
-PREVIEW_PAGES = [5, 10, 16, 31, 45, 52, 113]
+# Curated interior pages for the "Take a Look Inside" carousel, by the
+# finished book's own page numbers.
+PREVIEW_PAGES = [7, 14, 22, 40, 65, 100, 127]
 
 
 def save_webp(img, name, widths, quality=80):
@@ -87,12 +87,31 @@ def main():
             total += b
             print(f"  {p:<46} {size[0]}x{size[1]:<5} {b//1024}KB")
 
+    # Cover, straight from page one of the book people receive.
+    try:
+        import fitz as _fitz
+    except ImportError:
+        print("  ! PyMuPDF not installed, skipping cover render")
+    else:
+        pdf_path = os.path.join(ROOT, EBOOK)
+        if os.path.exists(pdf_path):
+            doc = _fitz.open(pdf_path)
+            pix = doc[0].get_pixmap(dpi=200)
+            cover = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
+            for p, size, b in save_webp(cover, "cover-flat", [cover.width], quality=88):
+                total += b
+                print(f"  {p:<46} {size[0]}x{size[1]:<5} {b//1024}KB")
+            for p, size, b in save_webp(cover, "cover-3d", [cover.width], quality=88):
+                total += b
+                print(f"  {p:<46} {size[0]}x{size[1]:<5} {b//1024}KB")
+            doc.close()
+
     try:
         import fitz
     except ImportError:
         print("  ! PyMuPDF not installed, skipping page previews")
     else:
-        pdf = os.path.join(ROOT, "A_Growing_Up_Guide_for_Teen_Girls.pdf")
+        pdf = os.path.join(ROOT, EBOOK)
         if os.path.exists(pdf):
             doc = fitz.open(pdf)
             for n in PREVIEW_PAGES:

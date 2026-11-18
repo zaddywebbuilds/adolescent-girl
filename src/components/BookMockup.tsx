@@ -18,8 +18,10 @@ export function BookMockup({
   priority?: boolean;
 }) {
   const src = variant === 'angled' ? '/images/cover-3d.webp' : '/images/cover-flat.webp';
-  const width = variant === 'angled' ? 497 : 500;
-  const height = variant === 'angled' ? 512 : 428;
+  // Rendered from page one of the finished PDF, so it is always the cover
+  // the buyer actually receives.
+  const width = 1200;
+  const height = 1800;
 
   return (
     <div className={className}>
@@ -44,42 +46,41 @@ export function BookMockup({
   );
 }
 
-/** Cover plus two interior spreads, for the product introduction section. */
+/** Cover plus two real interior pages, for the product introduction. */
 export function BookShowcase({ className }: { className?: string }) {
+  const page = (n: number) =>
+    `/images/preview/page-${String(n).padStart(3, '0')}.webp`;
+
   return (
     <div className={className}>
-      <div className="grid h-full gap-4 sm:grid-cols-5 sm:items-stretch">
-        <div className="flex items-center justify-center rounded-xl bg-cream/10 p-3 sm:col-span-2">
-          <img
-            src={asset('/images/cover-flat.webp')}
-            alt={coverAlt}
-            width={500}
-            height={428}
-            loading="lazy"
-            decoding="async"
-            className="w-full rounded-lg shadow-lift"
-          />
-        </div>
-        <div className="grid gap-4 sm:col-span-3">
-          <img
-            src={asset('/images/spread-periods.webp')}
-            alt="An open spread from Chapter 5, Periods Without Fear or Shame, showing key takeaways."
-            width={544}
-            height={428}
-            loading="lazy"
-            decoding="async"
-            className="h-full w-full rounded-xl object-cover shadow-soft"
-          />
-          <img
-            src={asset('/images/spread-reflection.webp')}
-            alt="An open spread from Chapter 2 beside a Reflection Time activity page."
-            width={505}
-            height={273}
-            loading="lazy"
-            decoding="async"
-            className="rounded-xl shadow-soft"
-          />
-        </div>
+      <div className="grid h-full grid-cols-3 items-center gap-3 sm:gap-4">
+        <img
+          src={asset('/images/cover-flat.webp')}
+          alt={coverAlt}
+          width={1200}
+          height={1800}
+          loading="lazy"
+          decoding="async"
+          className="col-span-1 w-full rounded-lg shadow-lift"
+        />
+        <img
+          src={asset(page(40))}
+          alt="Page 40 of the guide, opening the chapter on periods."
+          width={900}
+          height={1350}
+          loading="lazy"
+          decoding="async"
+          className="w-full rounded-lg shadow-soft"
+        />
+        <img
+          src={asset(page(22))}
+          alt="Page 22 of the guide, opening the chapter on trust, boundaries and staying safe."
+          width={900}
+          height={1350}
+          loading="lazy"
+          decoding="async"
+          className="w-full rounded-lg shadow-soft"
+        />
       </div>
     </div>
   );

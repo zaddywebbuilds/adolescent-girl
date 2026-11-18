@@ -20,10 +20,12 @@ export const product = {
   ageRange: '10 to 17',
   chapters: 16,
   /** Page count of the PDF that is actually delivered. Update on each revision. */
-  pages: 123,
+  pages: 160,
   /** Number of referenced public-health and child-protection sources. */
   referenceCount: 56,
   format: 'Digital PDF',
+  /** The finished book ends with a bonus section written for parents. */
+  hasParentGuide: true,
   /** Launch price in naira. The server reads PRODUCT_PRICE_NGN and must match. */
   priceNgn: 3500,
   currency: 'NGN',

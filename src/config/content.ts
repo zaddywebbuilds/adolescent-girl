@@ -4,22 +4,22 @@
  */
 
 export const chapters: { n: number; title: string; page: number }[] = [
-  { n: 1, title: 'Growing Up at Your Own Pace', page: 5 },
-  { n: 2, title: 'Understanding Your Changing Body', page: 10 },
-  { n: 3, title: 'Personal Safety: Trust, Boundaries, and Staying Safe', page: 16 },
-  { n: 4, title: 'Be Kind Without Letting Others Take Advantage', page: 23 },
-  { n: 5, title: 'Periods Without Fear or Shame', page: 31 },
-  { n: 6, title: 'Personal Hygiene and Everyday Care', page: 38 },
-  { n: 7, title: 'Your Feelings Matter', page: 45 },
-  { n: 8, title: 'Confidence, Body Image, and Self-Respect', page: 52 },
-  { n: 9, title: 'Friendships, Bullying, and Peer Pressure', page: 59 },
-  { n: 10, title: 'Your Body, Your Boundaries, and Consent', page: 67 },
-  { n: 11, title: 'Crushes, Relationships, and Reproductive Health', page: 75 },
-  { n: 12, title: 'Staying Safe Online and Offline', page: 82 },
-  { n: 13, title: 'Communicating with Family and Trusted Adults', page: 89 },
-  { n: 14, title: 'Healthy Habits for Your Body and Mind', page: 97 },
-  { n: 15, title: 'School, Money, Goals, and Your Future', page: 104 },
-  { n: 16, title: 'Growing into the Person You Want to Be', page: 113 },
+  { n: 1, title: 'Growing Up at Your Own Pace', page: 7 },
+  { n: 2, title: 'Understanding Your Changing Body', page: 14 },
+  { n: 3, title: 'Personal Safety: Trust, Boundaries, and Staying Safe', page: 22 },
+  { n: 4, title: 'Be Kind Without Letting Others Take Advantage', page: 31 },
+  { n: 5, title: 'Periods Without Fear or Shame', page: 40 },
+  { n: 6, title: 'Personal Hygiene and Everyday Care', page: 48 },
+  { n: 7, title: 'Your Feelings Matter', page: 56 },
+  { n: 8, title: 'Confidence, Body Image, and Self-Respect', page: 65 },
+  { n: 9, title: 'Friendships, Bullying, and Peer Pressure', page: 73 },
+  { n: 10, title: 'Your Body, Your Boundaries, and Consent', page: 82 },
+  { n: 11, title: 'Crushes, Relationships, and Reproductive Health', page: 91 },
+  { n: 12, title: 'Staying Safe Online and Offline', page: 100 },
+  { n: 13, title: 'Communicating with Family and Trusted Adults', page: 109 },
+  { n: 14, title: 'Healthy Habits for Your Body and Mind', page: 119 },
+  { n: 15, title: 'School, Money, Goals, and Your Future', page: 127 },
+  { n: 16, title: 'Growing into the Person You Want to Be', page: 137 },
 ];
 
 export type LearnItem = {
@@ -95,39 +95,39 @@ export const quotes: { text: string; chapter: number }[] = [
 /** Pages rendered by scripts/prepare-assets.py into /images/preview. */
 export const previewPages: { page: number; label: string; alt: string }[] = [
   {
-    page: 5,
+    page: 7,
     label: 'Chapter 1',
-    alt: "Page 5 of the guide, opening Chapter 1, Growing Up at Your Own Pace, with Amara's story.",
+    alt: "Page 7, opening Chapter 1, Growing Up at Your Own Pace, with Amara's story.",
   },
   {
-    page: 10,
+    page: 14,
     label: 'Chapter 2',
-    alt: 'Page 10 of the guide, opening Chapter 2, Understanding Your Changing Body.',
+    alt: 'Page 14, opening Chapter 2, Understanding Your Changing Body, where Zara asks her aunt a question.',
   },
   {
-    page: 16,
+    page: 22,
     label: 'Chapter 3',
-    alt: 'Page 16 of the guide, opening Chapter 3 on trust, boundaries and staying safe.',
+    alt: 'Page 22, opening Chapter 3 on trust, boundaries and staying safe.',
   },
   {
-    page: 31,
+    page: 40,
     label: 'Chapter 5',
-    alt: 'Page 31 of the guide, opening Chapter 5, Periods Without Fear or Shame.',
+    alt: 'Page 40, opening Chapter 5, Periods Without Fear or Shame.',
   },
   {
-    page: 45,
-    label: 'Chapter 7',
-    alt: 'Page 45 of the guide, opening Chapter 7, Your Feelings Matter.',
-  },
-  {
-    page: 52,
+    page: 65,
     label: 'Chapter 8',
-    alt: 'Page 52 of the guide, opening Chapter 8 on confidence, body image and self-respect.',
+    alt: 'Page 65, opening Chapter 8 on confidence, body image and self-respect.',
   },
   {
-    page: 113,
-    label: 'Chapter 16',
-    alt: 'Page 113 of the guide, opening Chapter 16, Growing into the Person You Want to Be.',
+    page: 100,
+    label: 'Chapter 12',
+    alt: 'Page 100, opening Chapter 12 on staying safe online and offline.',
+  },
+  {
+    page: 127,
+    label: 'Chapter 15',
+    alt: 'Page 127, opening Chapter 15 on school, money, goals and her future.',
   },
 ];
 

@@ -12,6 +12,7 @@ const included = [
   `${product.chapters} educational chapters`,
   'Practical reflection activities',
   'Realistic fictional stories',
+  'A bonus guide for parents and caregivers',
   'Readable on phones, tablets, and computers',
 ];
 

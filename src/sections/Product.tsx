@@ -17,6 +17,7 @@ export function IntroducingBook() {
     'Relatable fictional stories',
     'Reflection activities in every chapter',
     'Guidance on puberty, hygiene, relationships, and safety',
+    'A bonus guide for parents and caregivers',
   ];
 
   return (
@@ -158,9 +159,9 @@ export function BookPreview() {
 const features = [
   {
     icon: BookOpen,
-    image: '/images/spread-safety.webp',
+    image: '/images/preview/page-007.webp',
     imageAlt:
-      'An open spread showing a story from school alongside a Reflect and Write activity.',
+      "Page 7 of the guide, where Amara's story opens the first chapter.",
     title: 'Real-Life Stories',
     body: 'She reads about girls like her, with names like hers, facing the things she is facing.',
     example:
@@ -178,9 +179,9 @@ const features = [
   },
   {
     icon: ListChecks,
-    image: '/images/goals-notebook.webp',
+    image: '/images/preview/page-127.webp',
     imageAlt:
-      'A notebook page headed My Growing Up Goals with ticked items such as build my confidence.',
+      'Page 127 of the guide, opening the chapter on school, money, goals and her future.',
     title: 'Practical Activities',
     body: 'Reflection prompts, useful sentences, and simple exercises help girls think through what they are learning.',
     example:
@@ -220,7 +221,7 @@ export function HowItWorks() {
                   height={300}
                   loading="lazy"
                   decoding="async"
-                  className="hidden h-full max-h-32 w-full rounded-xl object-cover object-top shadow-soft sm:block"
+                  className="hidden h-full max-h-48 w-full rounded-xl object-cover object-top shadow-soft sm:block"
                 />
               </article>
             </Reveal>
