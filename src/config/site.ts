@@ -27,7 +27,9 @@ export const product = {
   /** The finished book ends with a bonus section written for parents. */
   hasParentGuide: true,
   /** Launch price in naira. The server reads PRODUCT_PRICE_NGN and must match. */
-  priceNgn: 3500,
+  // TEMPORARY: dropped to 200 so the owner can run a real end-to-end test
+  // cheaply. Put this back to 3500 as soon as the test purchase is done.
+  priceNgn: 200,
   currency: 'NGN',
   /**
    * Set only once a higher price has genuinely been charged for a period.
