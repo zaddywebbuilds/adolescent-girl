@@ -27,9 +27,7 @@ export const product = {
   /** The finished book ends with a bonus section written for parents. */
   hasParentGuide: true,
   /** Launch price in naira. The server reads PRODUCT_PRICE_NGN and must match. */
-  // TEMPORARY: dropped to 200 so the owner can run a real end-to-end test
-  // cheaply. Put this back to 3500 as soon as the test purchase is done.
-  priceNgn: 200,
+  priceNgn: 3500,
   currency: 'NGN',
   /**
    * Set only once a higher price has genuinely been charged for a period.
@@ -51,6 +49,19 @@ export const business = {
   /** NEEDS CONFIRMATION: add only handles that genuinely exist. */
   socials: [] as { label: string; href: string }[],
   country: 'Nigeria',
+} as const;
+
+/**
+ * Private group buyers are invited into after downloading.
+ *
+ * The invite link sits on the thank-you page, which anyone can reach, so
+ * treat it as public. If it ever needs to be buyers-only, that needs a
+ * server. Set url to null to hide the invitation entirely.
+ */
+export const community = {
+  url: 'https://t.me/+KY5vReLDKUk3MzRk' as PendingString,
+  platform: 'Telegram',
+  name: 'Dear Daughter Guide',
 } as const;
 
 export const site = {

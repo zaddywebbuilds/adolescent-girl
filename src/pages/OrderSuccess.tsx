@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { AlertCircle, CheckCircle2, Download } from 'lucide-react';
+import { AlertCircle, ArrowRight, CheckCircle2, Download, Users } from 'lucide-react';
 import { Shell } from '../components/ui';
-import { business, delivery, product } from '../config/site';
+import { business, community, delivery, product } from '../config/site';
 import { asset } from '../lib/asset';
 import { trackPurchase } from '../lib/analytics';
 
@@ -108,7 +108,32 @@ export default function OrderSuccess() {
             has also emailed you a receipt.
           </p>
 
-          <div className="mt-8 rounded-2xl bg-cream p-5 text-left text-sm text-charcoal/75">
+          {community.url && (
+            <div className="mt-8 rounded-2xl border border-sage/50 bg-sage-soft/60 p-6 text-left">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-cta shadow-soft">
+                <Users className="h-5 w-5" strokeWidth={1.5} aria-hidden="true" />
+              </span>
+              <h2 className="mt-4 font-serif text-xl text-plum">
+                Join other parents raising daughters
+              </h2>
+              <p className="mt-2 text-[0.95rem] leading-relaxed text-charcoal/75">
+                You are invited to our private {community.platform} group, where
+                parents and guardians share what is working, ask the awkward
+                questions, and support each other through these years.
+              </p>
+              <a
+                href={community.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-secondary mt-5 w-full border-plum/40 bg-white sm:w-auto"
+              >
+                Join the {community.platform} group
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
+          )}
+
+          <div className="mt-6 rounded-2xl bg-cream p-5 text-left text-sm text-charcoal/75">
             <p>
               <strong className="text-plum">Order reference:</strong> {reference}
             </p>
