@@ -61,7 +61,11 @@ export const site = {
   title: 'Dear Daughter | Growing Up & Puberty Guide for Girls in Nigeria',
   description:
     'Help your daughter understand puberty, periods, confidence, personal safety and growing up. Explore this practical digital guide for girls aged 10 to 17.',
-  ogImage: '/images/cover-3d.webp',
+  /**
+   * Landscape sharing card built by scripts/make-og.py. JPEG, because
+   * WhatsApp link previews are unreliable with WebP.
+   */
+  ogImage: '/images/og-image.jpg',
 } as const;
 
 export const analytics = {

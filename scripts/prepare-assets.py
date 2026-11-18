@@ -129,6 +129,17 @@ def main():
         else:
             print("  ! ebook PDF not found, skipping page previews")
 
+    # Social sharing card, composed from the cover rendered above.
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location(
+        "make_og", os.path.join(ROOT, "scripts", "make-og.py")
+    )
+    if spec and spec.loader:
+        make_og = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(make_og)
+        make_og.main()
+
     print(f"\nTotal image payload: {total//1024}KB")
 
 
