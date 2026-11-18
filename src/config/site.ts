@@ -53,12 +53,10 @@ export const business = {
 
 export const site = {
   /**
-   * Production URL, no trailing slash. This is a GitHub Pages project site,
-   * so it includes the repository sub-path. If a custom domain is added
-   * later, change this to the bare domain and set BASE to '/' in
-   * vite.config.ts at the same time.
+   * Production URL, no trailing slash. Must stay in step with BASE in
+   * vite.config.ts and with public/CNAME.
    */
-  url: 'https://zaddywebbuilds.github.io/adolescent-girl',
+  url: 'https://deardaughterguide.shop',
   locale: 'en_NG',
   title: 'Dear Daughter | Growing Up & Puberty Guide for Girls in Nigeria',
   description:
