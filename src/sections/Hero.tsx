@@ -29,7 +29,7 @@ export function Hero() {
       <Shell className="relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
         <div>
           <Eyebrow>
-            For girls aged {product.ageRange} &nbsp;|&nbsp; A guide for growing up
+            For Nigerian girls aged {product.ageRange} &nbsp;|&nbsp; A growing-up guide
           </Eyebrow>
 
           <h1 className="mt-4 text-[2.1rem] leading-[1.12] sm:text-5xl lg:text-[3.4rem]">
@@ -63,14 +63,14 @@ export function Hero() {
           />
 
           <p className="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-charcoal/80 md:text-lg">
-            From her first period to friendships, confidence, personal safety, and
-            understanding her changing body, growing up brings questions she may not
-            always know how to ask.
+            Most of us were never told these things at home. We learned from friends,
+            from the hostel, from the internet, or the hard way. Our daughters deserve
+            better than that.
           </p>
           <p className="mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-charcoal/80 md:text-lg">
-            Give her a thoughtful, practical guide that helps her understand herself,
-            build confidence, recognise unsafe situations, and navigate adolescence with
-            greater awareness.
+            This guide answers the questions she may feel too shy to bring to you: her
+            changing body, her first period, friendships, confidence, and how to
+            recognise when someone is not safe.
           </p>
 
           <ul className="mt-6 space-y-2.5">
@@ -114,12 +114,26 @@ export function Hero() {
           </p>
         </div>
 
-        <div className="hidden lg:block">
-          <BookMockup
-            variant="angled"
-            priority
-            className="mx-auto w-full lg:max-w-[26rem]"
-          />
+        <div className="hidden lg:flex lg:flex-col lg:items-center lg:justify-center">
+          <BookMockup variant="angled" priority className="w-full lg:max-w-[31rem]" />
+
+          <dl className="mt-7 grid w-full max-w-[31rem] grid-cols-3 gap-3">
+            {[
+              { n: product.chapters, l: 'Chapters' },
+              { n: product.pages, l: 'Pages' },
+              { n: product.referenceCount, l: 'Referenced sources' },
+            ].map((f) => (
+              <div
+                key={f.l}
+                className="rounded-2xl bg-white/70 px-3 py-4 text-center shadow-soft"
+              >
+                <dt className="font-serif text-2xl text-plum">{f.n}</dt>
+                <dd className="mt-0.5 text-xs leading-tight text-charcoal/60">
+                  {f.l}
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </Shell>
     </section>

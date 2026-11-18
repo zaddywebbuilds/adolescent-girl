@@ -142,7 +142,7 @@ repository.
 ```
 Buyer clicks a CTA
   → checkout dialog collects name + email        (InitiateCheckout fires)
-  → Paystack Inline popup, public key, ₦2,500    (Paystack handles the card)
+  → Paystack Inline popup, public key, ₦3,500    (Paystack handles the card)
   → Paystack success callback
   → /order-success?reference=…                   (Purchase fires, once)
   → download button → /downloads/…pdf

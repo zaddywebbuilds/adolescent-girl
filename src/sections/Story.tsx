@@ -13,17 +13,17 @@ const concerns = [
   {
     icon: 'body' as const,
     title: 'Her Changing Body',
-    body: 'Puberty, periods, hygiene, and physical development can bring questions that deserve clear, age-appropriate answers.',
+    body: 'Her body is changing and she has questions. If she cannot ask you, she will ask someone who may not know the answer.',
   },
   {
     icon: 'friendship' as const,
     title: 'Her Confidence and Friendships',
-    body: 'Comparisons, peer pressure, bullying, and changing friendships can affect how she sees herself and relates to others.',
+    body: 'Classmates, group chats and what she sees online all shape how she sees herself, and how easily she gives in to pressure.',
   },
   {
     icon: 'safety' as const,
     title: 'Her Safety and Boundaries',
-    body: 'Learning to recognise manipulation, respect personal boundaries, and seek help is an important part of growing up.',
+    body: 'She needs to know what is not normal, that it is never her fault, and that she can tell a trusted adult without being blamed.',
   },
 ];
 
@@ -31,8 +31,8 @@ export function EmotionalConnection() {
   return (
     <Section tone="cream" className="pt-4 md:pt-8">
       <Shell>
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
-          <Reveal className="order-2 lg:order-1">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-14">
+          <Reveal className="order-2 lg:order-1 lg:h-full">
             <img
               src={asset('/images/mother-daughter-sofa-800.webp')}
               srcSet={`${asset('/images/mother-daughter-sofa-800.webp')} 800w, ${asset('/images/mother-daughter-sofa.webp')} 1400w`}
@@ -42,7 +42,7 @@ export function EmotionalConnection() {
               height={533}
               loading="lazy"
               decoding="async"
-              className="w-full rounded-card object-cover shadow-soft"
+              className="h-full max-h-[34rem] w-full rounded-card object-cover shadow-soft"
             />
           </Reveal>
 
@@ -64,13 +64,13 @@ export function EmotionalConnection() {
             </ul>
 
             <p className="mt-7 text-[1.0625rem] leading-relaxed text-charcoal/80">
-              Growing up can feel exciting, confusing, and sometimes overwhelming. While
-              parents want to guide their daughters, finding the right words for every
-              conversation is not always easy.
+              In many Nigerian homes, these conversations are postponed until something
+              happens. Not because parents do not care, but because nobody sat us down
+              either, and the right words are hard to find.
             </p>
             <p className="mt-4 text-[1.0625rem] leading-relaxed text-charcoal/80">
-              That is why this guide was created: to make important growing-up
-              conversations easier to begin and understand.
+              So she asks her friends. She asks her phone. This guide gives her somewhere
+              better to look, and gives you an easier place to start the conversation.
             </p>
 
             <a href="#inside" className="btn btn-secondary mt-8">
@@ -109,8 +109,8 @@ export function ProblemAndSolution() {
         </div>
 
         <p className="mx-auto mt-9 max-w-2xl text-center font-serif text-xl leading-relaxed text-plum md:text-2xl">
-          She does not need to have everything figured out. She deserves clear
-          information, reassurance, and people she can turn to.
+          She does not need to have it all figured out. She needs clear answers,
+          reassurance, and to know she can come to you.
         </p>
       </Shell>
     </Section>

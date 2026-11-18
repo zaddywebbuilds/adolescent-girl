@@ -133,6 +133,8 @@ export const previewPages: { page: number; label: string; alt: string }[] = [
 
 export const ageBands: {
   range: string;
+  /** Rough Nigerian school classes, to help a parent place their own child. */
+  school: string;
   focus: string;
   chapters: string;
   image: string;
@@ -140,22 +142,25 @@ export const ageBands: {
 }[] = [
   {
     range: 'Ages 10 to 12',
+    school: 'Primary 5 to JSS 1',
     focus:
-      'Early puberty, hygiene, confidence, personal safety, and learning how to ask questions.',
+      'Early puberty, hygiene, confidence, personal safety, and learning that she is allowed to ask questions.',
     chapters: 'Chapters 1, 2, 3, 5, 6',
     image: '/images/girl-reading-bed-800.webp',
     alt: 'A girl lying on her bed reading a book in warm window light.',
   },
   {
     range: 'Ages 13 to 15',
+    school: 'JSS 2 to SS 1',
     focus:
-      'Changing friendships, emotions, boundaries, online safety, and growing independence.',
+      'Changing friendships, moods, boundaries, pressure from classmates, and staying safe online.',
     chapters: 'Chapters 4, 7, 8, 9, 12',
     image: '/images/schoolgirls.webp',
     alt: 'Three school friends in uniform walking and laughing together.',
   },
   {
     range: 'Ages 16 to 17',
+    school: 'SS 2 to SS 3',
     focus:
       'Relationships, reproductive health, responsibilities, school, money, and future planning.',
     chapters: 'Chapters 10, 11, 13, 15, 16',
@@ -171,7 +176,7 @@ export const steps: { title: string; body: string }[] = [
   },
   {
     title: 'Complete secure payment',
-    body: 'Pay securely in naira on Paystack using card, bank transfer or USSD.',
+    body: 'Pay in naira on Paystack with your debit card, a bank transfer, or USSD.',
   },
   {
     title: 'Download your ebook',

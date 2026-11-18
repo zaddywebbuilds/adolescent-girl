@@ -25,7 +25,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Can my daughter read it on her phone?',
-    a: 'Yes. The PDF opens on most phones, tablets and computers using a standard PDF reader.',
+    a: 'Yes. It opens on any Android or iPhone with a normal PDF reader, and on tablets and laptops. Download it once and she can read it offline, so it does not keep eating her data.',
   },
   {
     q: 'Does it discuss menstruation and puberty?',
@@ -36,8 +36,12 @@ export const faqs: Faq[] = [
     a: 'Yes. Chapter 3 covers trust, boundaries and staying safe, Chapter 10 covers boundaries and consent, and Chapter 12 covers staying safe online and offline, including how to tell a trusted adult.',
   },
   {
+    q: 'Is this written for Nigerian families?',
+    a: 'Yes, it is written with Nigerian homes in mind. The girls in the stories are Amara, Nneka, Zara and Leila, their teacher is Mrs Bello, and the safety guidance draws on UNICEF Nigeria and the Nigerian Communications Commission alongside international health bodies. Nothing in it assumes a foreign way of life.',
+  },
+  {
     q: 'Is it a religious book?',
-    a: 'No. It is written to be useful to girls from different faiths, cultures and family backgrounds, and it does not teach any particular religion.',
+    a: 'No. Nigerian families are Christian, Muslim and traditional, and this guide was written to sit comfortably in any of them. It teaches no religion and takes no side. The values it encourages are respect, honesty, self-respect and safety.',
   },
   {
     q: 'Where does the health information come from?',
@@ -49,7 +53,7 @@ export const faqs: Faq[] = [
   },
   {
     q: 'Can I buy it for the daughter of a friend or relative?',
-    a: 'Yes. You can buy it as a gift and pass the PDF on to her parent or guardian. Your licence covers personal use within one family.',
+    a: 'Yes. Many buyers are aunties, uncles and godparents. Buy it and pass the file to her parent or guardian. Your licence covers personal use within one family, so please do not post it in a group chat.',
   },
   {
     q: 'Can I request a refund?',
@@ -62,7 +66,7 @@ export const faqs: Faq[] = [
     pending: !business.supportEmail,
   },
   {
-    q: 'How much does it cost?',
-    a: `${priceLabel}, paid once. There is no subscription and no repeat charge.`,
+    q: 'How do I pay, and how much is it?',
+    a: `${priceLabel}, paid once in naira. You can pay with your debit card, by bank transfer or with USSD, all through Paystack. There is no subscription and no repeat charge.`,
   },
 ];

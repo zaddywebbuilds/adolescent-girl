@@ -25,7 +25,7 @@ export const product = {
   referenceCount: 56,
   format: 'Digital PDF',
   /** Launch price in naira. The server reads PRODUCT_PRICE_NGN and must match. */
-  priceNgn: 2500,
+  priceNgn: 3500,
   currency: 'NGN',
   /**
    * Set only once a higher price has genuinely been charged for a period.
@@ -110,7 +110,7 @@ export const delivery = {
   saveAs: 'Dear-Daughter-Growing-Up-Guide.pdf',
 } as const;
 
-/** Formats naira without decimals: ₦2,500 */
+/** Formats naira without decimals: ₦3,500 */
 export function formatNaira(amount: number): string {
   return `₦${amount.toLocaleString('en-NG')}`;
 }

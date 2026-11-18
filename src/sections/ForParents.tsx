@@ -7,7 +7,7 @@ import { asset } from '../lib/asset';
 const benefits = [
   {
     icon: MessageCircle,
-    text: 'Encourage conversations that might otherwise feel awkward.',
+    text: 'Start the talks that are hard to begin, without the awkwardness.',
   },
   {
     icon: Heart,
@@ -15,7 +15,7 @@ const benefits = [
   },
   {
     icon: Repeat,
-    text: 'Give her practical information she can revisit privately.',
+    text: 'Let her read it privately, as many times as she needs.',
   },
 ];
 
@@ -25,8 +25,8 @@ export function BenefitsForParents() {
   return (
     <Section tone="cream">
       <Shell>
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
-          <Reveal>
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-14">
+          <Reveal className="lg:h-full">
             <img
               src={asset('/images/reading-together-800.webp')}
               srcSet={`${asset('/images/reading-together-800.webp')} 800w, ${asset('/images/reading-together.webp')} 1400w`}
@@ -36,7 +36,7 @@ export function BenefitsForParents() {
               height={533}
               loading="lazy"
               decoding="async"
-              className="w-full rounded-card object-cover shadow-soft"
+              className="h-full max-h-[34rem] w-full rounded-card object-cover shadow-soft"
             />
           </Reveal>
 
@@ -47,13 +47,14 @@ export function BenefitsForParents() {
             </h2>
 
             <p className="mt-6 text-[1.0625rem] leading-relaxed text-charcoal/80">
-              You will not always be beside your daughter when she faces a difficult
-              question, an uncomfortable situation, or a confusing moment.
+              You cannot be there at school, at the lesson teacher's house, at a
+              family gathering, or inside her group chat. That is the honest truth every
+              Nigerian parent lives with.
             </p>
             <p className="mt-4 text-[1.0625rem] leading-relaxed text-charcoal/80">
-              But you can help her build knowledge and confidence that support better
-              decisions. This guide offers a starting point for important conversations
-              and a resource she can revisit as she grows.
+              What you can do is make sure she is not facing those moments uninformed.
+              This guide gives her the words and the knowledge, and gives you a natural
+              way to open the conversation at home.
             </p>
 
             <ul className="mt-8 space-y-4">
@@ -90,7 +91,7 @@ export function AgeAppropriateness() {
         <SectionHeading
           eyebrow="A note about age"
           title="Different Ages. Different Questions."
-          intro="Every girl grows at her own pace. Some chapters may be useful now, while others may become more relevant later."
+          intro="Every girl grows at her own pace. Some chapters will matter to her this term, others will matter in a year or two."
         />
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -108,6 +109,7 @@ export function AgeAppropriateness() {
                 />
                 <div className="p-6">
                   <p className="font-serif text-2xl text-plum">{band.range}</p>
+                  <p className="mt-1 text-sm text-charcoal/55">{band.school}</p>
                   <div className="rule mt-3 h-px w-16" aria-hidden="true" />
                   <p className="mt-3 text-[0.975rem] leading-relaxed text-charcoal/75">
                     {band.focus}

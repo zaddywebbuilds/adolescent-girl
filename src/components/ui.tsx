@@ -25,7 +25,7 @@ export function Section({
   return (
     <section
       id={id}
-      className={cn('scroll-mt-20 py-9 md:py-12', tones[tone], className)}
+      className={cn('scroll-mt-20 py-8 md:py-10', tones[tone], className)}
     >
       {children}
     </section>

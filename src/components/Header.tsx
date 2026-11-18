@@ -15,7 +15,7 @@ export function AnnouncementBar() {
   return (
     <div className="bg-plum text-cream">
       <p className="shell py-2 text-center text-[0.62rem] leading-snug tracking-[0.1em] uppercase sm:text-xs sm:tracking-[0.12em]">
-        Helping girls grow with knowledge, confidence, and care.
+        Helping Nigerian girls grow with knowledge, confidence, and care.
       </p>
     </div>
   );

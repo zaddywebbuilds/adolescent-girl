@@ -48,16 +48,18 @@ export function BookMockup({
 export function BookShowcase({ className }: { className?: string }) {
   return (
     <div className={className}>
-      <div className="grid gap-4 sm:grid-cols-5 sm:items-center">
-        <img
-          src={asset('/images/cover-flat.webp')}
-          alt={coverAlt}
-          width={500}
-          height={428}
-          loading="lazy"
-          decoding="async"
-          className="rounded-xl shadow-lift sm:col-span-2"
-        />
+      <div className="grid h-full gap-4 sm:grid-cols-5 sm:items-stretch">
+        <div className="flex items-center justify-center rounded-xl bg-cream/10 p-3 sm:col-span-2">
+          <img
+            src={asset('/images/cover-flat.webp')}
+            alt={coverAlt}
+            width={500}
+            height={428}
+            loading="lazy"
+            decoding="async"
+            className="w-full rounded-lg shadow-lift"
+          />
+        </div>
         <div className="grid gap-4 sm:col-span-3">
           <img
             src={asset('/images/spread-periods.webp')}
@@ -66,7 +68,7 @@ export function BookShowcase({ className }: { className?: string }) {
             height={428}
             loading="lazy"
             decoding="async"
-            className="rounded-xl shadow-soft"
+            className="h-full w-full rounded-xl object-cover shadow-soft"
           />
           <img
             src={asset('/images/spread-reflection.webp')}

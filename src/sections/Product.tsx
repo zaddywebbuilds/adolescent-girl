@@ -26,15 +26,15 @@ export function IntroducingBook() {
         className="pointer-events-none absolute -top-24 -left-24 h-96 w-96 rounded-full bg-cta/40 blur-3xl"
       />
       <Shell className="relative">
-        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+        <div className="grid gap-8 lg:grid-cols-2 lg:items-stretch lg:gap-14">
           <div>
             <Eyebrow tone="light">Meet the guide</Eyebrow>
             <h2 className="mt-4 text-[1.9rem] text-cream sm:text-4xl md:text-[2.75rem]">
               {product.title}
             </h2>
             <p className="mt-5 text-[1.0625rem] leading-relaxed text-cream/80 md:text-lg">
-              A practical growing-up guide designed to help girls understand their
-              bodies, emotions, friendships, boundaries, and future.
+              A practical guide for Nigerian girls, written to help her understand her
+              body, her emotions, her friendships, her boundaries and her future.
             </p>
 
             <ul className="mt-8 space-y-3">
@@ -50,9 +50,11 @@ export function IntroducingBook() {
             </ul>
 
             <p className="mt-7 max-w-md text-sm leading-relaxed text-cream/60">
-              Health and safety information carries numbered references to{' '}
-              {product.referenceCount} public sources, including the NHS, the World
-              Health Organization, UNICEF Nigeria and the NSPCC.
+              The girls in the stories are called Amara, Nneka, Zara and Leila, and
+              their teacher is Mrs Bello. The health and safety guidance carries{' '}
+              {product.referenceCount} numbered references, including UNICEF Nigeria and
+              the Nigerian Communications Commission alongside the NHS and the World
+              Health Organization.
             </p>
 
             <button
@@ -64,8 +66,8 @@ export function IntroducingBook() {
             </button>
           </div>
 
-          <Reveal>
-            <BookShowcase />
+          <Reveal className="lg:h-full">
+            <BookShowcase className="h-full" />
           </Reveal>
         </div>
       </Shell>
@@ -160,7 +162,7 @@ const features = [
     imageAlt:
       'An open spread showing a story from school alongside a Reflect and Write activity.',
     title: 'Real-Life Stories',
-    body: 'Relatable fictional experiences help readers understand everyday situations and choices.',
+    body: 'She reads about girls like her, with names like hers, facing the things she is facing.',
     example:
       'In Chapter 5, Leila notices a stain during the school break and does not have a pad. A friend helps her ask a teacher, who finds supplies and explains what to do next.',
   },

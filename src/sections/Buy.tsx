@@ -23,10 +23,10 @@ export function PurchaseBlock() {
       <Shell>
         <div className="card overflow-hidden p-0">
           <div className="grid items-center gap-10 p-6 sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14 lg:p-14">
-            <div className="rounded-[1.75rem] bg-gradient-to-br from-rose-soft/55 to-sage-soft/55 px-8 py-10 sm:px-10">
+            <div className="flex h-full items-center justify-center rounded-[1.75rem] bg-gradient-to-br from-rose-soft/55 to-sage-soft/55 px-8 py-10 sm:px-10">
               <BookMockup
                 variant="angled"
-                className="mx-auto w-[min(17rem,66vw)] lg:w-full"
+                className="mx-auto w-[min(17rem,66vw)] lg:w-full lg:max-w-[20rem]"
               />
             </div>
 
@@ -158,8 +158,8 @@ export function FinalCta() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-cream/80 lg:mx-0">
-            Give her a thoughtful resource to help answer questions, understand
-            herself, and navigate the changes ahead.
+            Give her the answers you may not have been given at her age, and the
+            confidence to carry them.
           </p>
 
           <button
