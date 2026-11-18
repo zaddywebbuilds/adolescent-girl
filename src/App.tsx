@@ -31,7 +31,13 @@ function RouteEffects() {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    const match = routes.find((r) => r.path === pathname);
+    // GitHub Pages serves directories, so it redirects /privacy-policy to
+    // /privacy-policy/. Without stripping that slash every subpage looked
+    // like a 404 to this lookup, which set the title to "Page not found"
+    // and applied a noindex tag after hydration.
+    const normalised =
+      pathname !== '/' && pathname.endsWith('/') ? pathname.slice(0, -1) : pathname;
+    const match = routes.find((r) => r.path === normalised);
     applyClientHead(match ?? notFoundMeta);
     trackPageView(pathname);
 
