@@ -45,7 +45,7 @@ export function Header() {
       <Shell className="flex h-16 items-center justify-between gap-4">
         <Link
           to="/"
-          className="flex items-center gap-2 font-serif text-xl text-plum sm:text-[1.4rem]"
+          className="flex shrink-0 items-center gap-2 font-serif text-lg whitespace-nowrap text-plum sm:text-[1.4rem]"
         >
           <Wordmark />
           <span>{business.name}</span>
@@ -66,7 +66,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => open('header')}
-          className="btn btn-primary min-h-11 px-5 py-2.5 text-sm"
+          className="btn btn-primary min-h-11 shrink-0 px-3.5 py-2.5 text-xs whitespace-nowrap sm:px-5 sm:text-sm"
         >
           Get the Guide
         </button>

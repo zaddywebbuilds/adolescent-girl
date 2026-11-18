@@ -66,6 +66,43 @@ export function bookJsonLd() {
   };
 }
 
+/**
+ * Organisation and site identity. Helps search engines connect the brand,
+ * and gives the site a chance at a sitelinks search box later.
+ * Only fields that are genuinely known are emitted.
+ */
+export function organizationJsonLd() {
+  const org: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: business.legalName ?? business.name,
+    url: site.url,
+    logo: abs(site.ogImage),
+    areaServed: { '@type': 'Country', name: 'Nigeria' },
+  };
+  if (business.supportEmail) {
+    org.contactPoint = {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      email: business.supportEmail,
+      areaServed: 'NG',
+      availableLanguage: 'English',
+    };
+  }
+  return org;
+}
+
+export function websiteJsonLd() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: business.name,
+    url: site.url,
+    inLanguage: 'en-NG',
+    description: site.description,
+  };
+}
+
 export function faqJsonLd() {
   return {
     '@context': 'https://schema.org',
@@ -97,6 +134,9 @@ export function renderHead(meta: PageMeta): string {
     `<meta property="og:description" content="${esc(meta.description)}" />`,
     `<meta property="og:url" content="${canonical}" />`,
     `<meta property="og:image" content="${image}" />`,
+    '<meta property="og:image:width" content="497" />',
+    '<meta property="og:image:height" content="512" />',
+    '<meta property="og:image:type" content="image/webp" />',
     `<meta property="og:image:alt" content="${esc(product.title)}, a digital guide for girls aged ${product.ageRange}" />`,
     `<meta property="og:locale" content="${site.locale}" />`,
     '<meta name="twitter:card" content="summary_large_image" />',

@@ -32,10 +32,10 @@ export function Footer() {
             <h2 className="text-sm font-semibold tracking-wide text-cream uppercase">
               Policies
             </h2>
-            <ul className="mt-4 space-y-2.5 text-sm">
+            <ul className="mt-3 text-sm">
               {legalLinks.map((l) => (
                 <li key={l.to}>
-                  <Link to={l.to} className="transition hover:text-cream">
+                  <Link to={l.to} className="block py-1.5 transition hover:text-cream">
                     {l.label}
                   </Link>
                 </li>
@@ -47,12 +47,12 @@ export function Footer() {
             <h2 className="text-sm font-semibold tracking-wide text-cream uppercase">
               Contact
             </h2>
-            <ul className="mt-4 space-y-2.5 text-sm">
+            <ul className="mt-3 text-sm">
               {business.supportEmail ? (
                 <li>
                   <a
                     href={`mailto:${business.supportEmail}`}
-                    className="transition hover:text-cream"
+                    className="block py-1.5 transition hover:text-cream"
                   >
                     {business.supportEmail}
                   </a>

@@ -81,8 +81,8 @@ export function WhatSheWillLearn() {
       <Shell>
         <SectionHeading
           eyebrow="Inside the guide"
-          title="Important Lessons for Every Stage of Growing Up"
-          intro={`${product.chapters} chapters, grouped into the six areas parents ask about most.`}
+          title="What She Will Know By the Time She Finishes It"
+          intro={`A complete growing-up guide for teenage girls: ${product.chapters} chapters covering puberty, periods, confidence and personal safety, grouped into the six areas parents ask about most.`}
         />
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -134,7 +134,7 @@ export function BookPreview() {
         <SectionHeading
           eyebrow="Take a look inside"
           title="Real Pages From the Guide"
-          intro="Explore the thoughtful stories, practical explanations, and activities that make this guide useful."
+          intro="Not a sample someone wrote for the advert. These are real pages from the puberty and personal safety guide your daughter will be reading."
         />
         <PreviewCarousel />
         <div className="mt-10 text-center">

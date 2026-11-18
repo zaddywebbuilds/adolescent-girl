@@ -88,8 +88,8 @@ export function ProblemAndSolution() {
     <Section tone="deep">
       <Shell>
         <SectionHeading
-          eyebrow="What she is navigating"
-          title="She Is Growing Up in a World Full of Questions."
+          eyebrow="What she is facing now"
+          title="The Questions Are Already Here. The Answers Should Be Too."
         />
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">

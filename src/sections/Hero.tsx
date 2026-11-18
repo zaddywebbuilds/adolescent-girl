@@ -5,10 +5,10 @@ import { Eyebrow, Shell } from '../components/ui';
 import { priceLabel, product } from '../config/site';
 
 const benefits = [
-  'Understand puberty and periods with less confusion.',
-  'Build confidence, self-respect, and healthy boundaries.',
-  'Learn about friendships, emotions, and personal safety.',
-  'Explore growing up through relatable stories and activities.',
+  'She will understand what is happening to her body, and why.',
+  'She will know how to handle her period without panic or shame.',
+  'She will recognise when someone is crossing a line, and who to tell.',
+  'She will learn it from stories about girls like her, not from rumours.',
 ];
 
 export function Hero() {
@@ -27,12 +27,14 @@ export function Hero() {
       />
 
       <Shell className="relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-        <div>
-          <Eyebrow>
+        {/* Flex on mobile so the price and CTA can sit above the supporting
+            copy and benefit list. Source order is restored at lg. */}
+        <div className="flex flex-col lg:block">
+          <Eyebrow className="order-1 lg:order-none">
             For Nigerian girls aged {product.ageRange} &nbsp;|&nbsp; A growing-up guide
           </Eyebrow>
 
-          <h1 className="mt-4 text-[2.1rem] leading-[1.12] sm:text-5xl lg:text-[3.4rem]">
+          <h1 className="order-2 mt-4 text-[1.9rem] leading-[1.14] sm:text-5xl lg:order-none lg:text-[3.4rem]">
             Growing Up Comes With Questions.
             <br className="hidden sm:block" /> Help Your Daughter{' '}
             <span className="relative whitespace-nowrap text-cta">
@@ -59,21 +61,21 @@ export function Hero() {
           <BookMockup
             variant="angled"
             priority
-            className="mx-auto mt-6 w-[min(15rem,56vw)] lg:hidden"
+            className="order-3 mx-auto mt-6 w-[min(15rem,56vw)] lg:hidden"
           />
 
-          <p className="mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-charcoal/80 md:text-lg">
+          <p className="order-4 mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-charcoal/80 lg:order-none md:text-lg">
             Most of us were never told these things at home. We learned from friends,
             from the hostel, from the internet, or the hard way. Our daughters deserve
             better than that.
           </p>
-          <p className="mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-charcoal/80 md:text-lg">
+          <p className="order-8 mt-6 max-w-xl text-[1.0625rem] leading-relaxed text-charcoal/80 lg:order-none lg:mt-4 md:text-lg">
             This guide answers the questions she may feel too shy to bring to you: her
             changing body, her first period, friendships, confidence, and how to
             recognise when someone is not safe.
           </p>
 
-          <ul className="mt-6 space-y-2.5">
+          <ul className="order-9 mt-6 space-y-2.5 lg:order-none">
             {benefits.map((b) => (
               <li key={b} className="flex items-start gap-3">
                 <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sage-soft">
@@ -86,7 +88,7 @@ export function Hero() {
             ))}
           </ul>
 
-          <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <div className="order-5 mt-7 flex flex-wrap items-center gap-x-5 gap-y-2 lg:order-none">
             <span className="font-serif text-4xl text-plum md:text-[2.75rem]">
               {priceLabel}
             </span>
@@ -95,7 +97,7 @@ export function Hero() {
             </span>
           </div>
 
-          <div id="hero-cta" className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div id="hero-cta" className="order-6 mt-5 flex flex-col gap-3 sm:flex-row sm:items-center lg:order-none">
             <button
               type="button"
               onClick={() => open('hero')}
@@ -108,7 +110,7 @@ export function Hero() {
             </a>
           </div>
 
-          <p className="mt-4 flex items-center gap-2 text-sm text-charcoal/60">
+          <p className="order-7 mt-4 flex items-center gap-2 text-sm text-charcoal/60 lg:order-none">
             <ShieldCheck className="h-4 w-4 text-sage" aria-hidden="true" />
             Secure online payment. Download after purchase.
           </p>

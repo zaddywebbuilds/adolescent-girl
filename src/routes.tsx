@@ -8,7 +8,14 @@ import {
   RefundPolicy,
   TermsAndConditions,
 } from './pages/Legal';
-import { bookJsonLd, faqJsonLd, productJsonLd, type PageMeta } from './lib/seo';
+import {
+  bookJsonLd,
+  faqJsonLd,
+  organizationJsonLd,
+  productJsonLd,
+  websiteJsonLd,
+  type PageMeta,
+} from './lib/seo';
 import { product, site } from './config/site';
 
 export type AppRoute = PageMeta & {
@@ -23,7 +30,13 @@ export const routes: AppRoute[] = [
     element: <Landing />,
     title: site.title,
     description: site.description,
-    jsonLd: [productJsonLd(), bookJsonLd(), faqJsonLd()],
+    jsonLd: [
+      productJsonLd(),
+      bookJsonLd(),
+      faqJsonLd(),
+      organizationJsonLd(),
+      websiteJsonLd(),
+    ],
     sitemap: { priority: 1.0, changefreq: 'weekly' },
   },
   {

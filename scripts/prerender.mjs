@@ -37,13 +37,32 @@ async function writePage(path, html) {
 
 const written = [];
 
+// A router misconfiguration can make renderToString return an empty string
+// while the build still "succeeds". The site would then look fine to a
+// visitor, because React renders it client side, and be blank to every
+// crawler. Fail the build instead of shipping that.
+const MIN_HTML = 2000;
+
 for (const route of routes) {
   const { html, head } = render(route.path);
+
+  if (html.trim().length < MIN_HTML) {
+    console.error('');
+    console.error(
+      `  Prerender produced only ${html.trim().length} characters for ${route.path},`,
+    );
+    console.error(`  expected at least ${MIN_HTML}.`);
+    console.error('  The page would be empty for search engines.');
+    console.error('  Check the router basename in src/entry-server.tsx.');
+    console.error('');
+    process.exit(1);
+  }
+
   const page = template
     .replace('<!--app-head-->', head)
     .replace('<!--app-html-->', html);
   written.push(await writePage(route.path, page));
-  console.log(`  prerendered ${route.path}`);
+  console.log(`  prerendered ${route.path} (${Math.round(html.length / 1024)}KB)`);
 }
 
 // 404 for hosts that serve a custom error page.

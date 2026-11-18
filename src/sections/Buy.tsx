@@ -32,7 +32,7 @@ export function PurchaseBlock() {
 
             <div>
               <h2 className="text-[1.65rem] sm:text-3xl md:text-[2.2rem]">
-                Help Her Navigate Growing Up With Greater Confidence.
+                One Decision Today. Answers She Will Carry for Years.
               </h2>
 
               <p className="mt-4 font-serif text-lg text-cta">{product.title}</p>
