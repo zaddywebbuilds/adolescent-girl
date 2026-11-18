@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { AlertCircle, CheckCircle2, Download } from 'lucide-react';
 import { Shell } from '../components/ui';
@@ -16,8 +16,31 @@ import { trackPurchase } from '../lib/analytics';
  */
 export default function OrderSuccess() {
   const [params] = useSearchParams();
-  const reference = params.get('reference') ?? params.get('trxref');
-  const firstName = params.get('name')?.trim();
+  const urlReference = params.get('reference') ?? params.get('trxref');
+
+  // Paystack normally returns the reference in the URL. If it did not, fall
+  // back to the order recorded just before the popup opened, so a buyer is
+  // never stranded without their download. Read after mount, so the
+  // prerendered HTML and the first client render agree.
+  const [pending, setPending] = useState<{ reference?: string; name?: string } | null>(
+    null,
+  );
+  const [checkedStorage, setCheckedStorage] = useState(false);
+
+  useEffect(() => {
+    if (!urlReference) {
+      try {
+        const raw = sessionStorage.getItem('dd_pending_order');
+        if (raw) setPending(JSON.parse(raw));
+      } catch {
+        /* private mode */
+      }
+    }
+    setCheckedStorage(true);
+  }, [urlReference]);
+
+  const reference = urlReference ?? pending?.reference ?? null;
+  const firstName = (params.get('name') ?? pending?.name ?? '').trim().split(' ')[0];
 
   useEffect(() => {
     if (!reference) return;
@@ -30,6 +53,7 @@ export default function OrderSuccess() {
   }, [reference]);
 
   if (!reference) {
+    if (!checkedStorage) return <main className="bg-cream py-24" />;
     return (
       <main className="bg-cream py-16 md:py-24">
         <Shell className="max-w-2xl">

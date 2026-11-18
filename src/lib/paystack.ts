@@ -87,6 +87,18 @@ export async function openPaystack(args: {
 
   const reference = makeReference();
 
+  // Written before the popup opens. If Paystack's callback never reaches us,
+  // because the tab was backgrounded, the popup was closed early, or the
+  // charge completed out of band, the thank-you page can still find the order.
+  try {
+    sessionStorage.setItem(
+      'dd_pending_order',
+      JSON.stringify({ reference, name: args.name, at: Date.now() }),
+    );
+  } catch {
+    /* private mode, carry on */
+  }
+
   const handler = window.PaystackPop.setup({
     key: payments.publicKey,
     email: args.email,

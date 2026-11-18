@@ -8,7 +8,6 @@ import {
   type ReactNode,
 } from 'react';
 import { Loader2, Lock, X } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { delivery, product, priceLabel, formatNaira } from '../config/site';
 import { asset } from '../lib/asset';
 import { openPaystack } from '../lib/paystack';
@@ -60,7 +59,6 @@ function CheckoutDialog({
   const [error, setError] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
   const firstFieldRef = useRef<HTMLInputElement>(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     firstFieldRef.current?.focus();
@@ -137,12 +135,12 @@ function CheckoutDialog({
         attribution: getAttribution(),
         onClose: () => setStatus('idle'),
         onSuccess: (reference) => {
-          // Paystack only calls this after a successful charge. The site has
-          // no server, so this is the confirmation we act on.
-          navigate(
+          // Paystack calls this from inside its own iframe. A React Router
+          // navigate can be dropped there, so force a real page load.
+          const target =
             `/order-success?reference=${encodeURIComponent(reference)}` +
-              `&name=${encodeURIComponent(cleanName.split(' ')[0] ?? '')}`,
-          );
+            `&name=${encodeURIComponent(cleanName.split(' ')[0] ?? '')}`;
+          window.location.assign(target);
         },
       });
     } catch (err) {

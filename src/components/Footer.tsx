@@ -4,6 +4,7 @@ import { Wordmark } from './Icons';
 import { Shell } from './ui';
 
 const legalLinks = [
+  { label: 'Already bought? Get your download', to: '/order-success' },
   { label: 'Privacy Policy', to: '/privacy-policy' },
   { label: 'Terms and Conditions', to: '/terms-and-conditions' },
   { label: 'Refund Policy', to: '/refund-policy' },
