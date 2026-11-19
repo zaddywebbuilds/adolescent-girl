@@ -43,14 +43,17 @@ export default function OrderSuccess() {
   const firstName = (params.get('name') ?? pending?.name ?? '').trim().split(' ')[0];
 
   useEffect(() => {
-    if (!reference) return;
+    // Only report a sale when Paystack handed the reference back in the URL.
+    // The stored fallback can belong to a checkout that was abandoned, and
+    // counting those would teach Meta to chase the wrong people.
+    if (!urlReference) return;
     trackPurchase({
-      reference,
-      eventId: `purchase_${reference}`,
+      reference: urlReference,
+      eventId: `purchase_${urlReference}`,
       value: product.priceNgn,
       currency: product.currency,
     });
-  }, [reference]);
+  }, [urlReference]);
 
   if (!reference) {
     if (!checkedStorage) return <main className="bg-cream py-24" />;

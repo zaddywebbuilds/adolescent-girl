@@ -83,7 +83,7 @@ export const site = {
 
 export const analytics = {
   /** Meta Pixel ID. Tracking stays off while this is null. */
-  metaPixelId: null as PendingString,
+  metaPixelId: '3448594048639150' as PendingString,
   /** GA4 measurement ID, e.g. G-XXXXXXX. */
   ga4Id: null as PendingString,
   /** GTM container ID, e.g. GTM-XXXXXX. Optional alternative to the two above. */
