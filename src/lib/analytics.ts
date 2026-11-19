@@ -41,7 +41,12 @@ export function setConsent(value: 'granted' | 'denied') {
   } catch {
     /* storage unavailable: consent applies to this page view only */
   }
-  if (value === 'granted') boot();
+  if (value === 'granted') {
+    boot();
+    while (pending.length) pending.shift()?.();
+  } else {
+    pending.length = 0;
+  }
 }
 
 /** True when any tag is configured, so the consent bar has a reason to appear. */
@@ -54,6 +59,25 @@ function trackingAllowed() {
   if (!hasTagsConfigured()) return false;
   if (!analytics.requireConsent) return true;
   return getConsent() === 'granted';
+}
+
+/**
+ * Events raised before the visitor has answered the cookie notice.
+ *
+ * ViewContent fires on page load, which is always before anyone can accept,
+ * so without this every visitor who accepts would be missing the main
+ * top-of-funnel signal Meta optimises against. Held events are replayed on
+ * accept and dropped on decline.
+ */
+const pending: (() => void)[] = [];
+
+function run(fn: () => void) {
+  if (trackingAllowed()) {
+    fn();
+    return;
+  }
+  const undecided = hasTagsConfigured() && analytics.requireConsent && getConsent() === null;
+  if (undecided && pending.length < 20) pending.push(fn);
 }
 
 let booted = false;
@@ -122,13 +146,14 @@ function ga(event: string, props: Props = {}) {
 }
 
 export function trackPageView(path: string) {
-  if (!trackingAllowed()) return;
+  if (!trackingAllowed()) return run(() => trackPageView(path));
   boot();
   if (analytics.metaPixelId) window.fbq?.('track', 'PageView');
   if (analytics.ga4Id) window.gtag?.('event', 'page_view', { page_path: path });
 }
 
 export function trackViewContent() {
+  if (!trackingAllowed()) return run(trackViewContent);
   meta('ViewContent', {
     content_ids: [product.sku],
     content_name: product.title,
@@ -145,6 +170,7 @@ export function trackViewContent() {
 
 /** Fired when the checkout form opens, not when payment completes. */
 export function trackInitiateCheckout(source: string) {
+  if (!trackingAllowed()) return run(() => trackInitiateCheckout(source));
   meta('InitiateCheckout', {
     content_ids: [product.sku],
     content_name: product.title,
